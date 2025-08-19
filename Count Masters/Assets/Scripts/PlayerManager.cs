@@ -10,21 +10,81 @@ public class PlayerManager : MonoBehaviour
     //******************************************
 
     [Range(0f,1f)][SerializeField] private float DistanceFactor, Radius;
+
+    //----------move the player -------------------
+    public bool moveByTouch, gameState;
+    private Vector3 mouseStartPos, playerStartPos;
+    public float playerSpeed;
+    private Camera camera;
+
+
     void Start()
     {
         player = transform;
         numberOfStickmans = transform.childCount - 1;
         CounterTxt.text = numberOfStickmans.ToString();
+        camera = Camera.main;
     }
+
 
     void Update()
     {
-        
+        MoveThePlayer();
+    }
+
+    void MoveThePlayer()
+    {
+        if (Input.GetMouseButtonDown(0) && gameState)
+        {
+            moveByTouch = true;
+
+            var plane = new Plane(Vector3.up, 0f);
+
+            var ray = camera.ScreenPointToRay(Input.mousePosition);
+
+            if (plane.Raycast(ray, out var distance))
+            {
+                mouseStartPos = ray.GetPoint(distance + 1f);
+                playerStartPos = transform.position;
+            }
+
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            moveByTouch = false;
+
+        }
+
+        if (moveByTouch)
+        {
+            var plane = new Plane(Vector3.up, 0f);
+            var ray = camera.ScreenPointToRay(Input.mousePosition);
+
+            if (plane.Raycast(ray, out var distance))
+            {
+                var mousePos = ray.GetPoint(distance + 1f);
+
+                var move = mousePos - mouseStartPos;
+
+                var control = playerStartPos + move;
+
+
+                if (numberOfStickmans > 50)
+                    control.x = Mathf.Clamp(control.x, 3f, 10f);
+                else
+                    control.x = Mathf.Clamp(control.x, 0f, 13f);
+
+                transform.position = new Vector3(Mathf.Lerp(transform.position.x, control.x, Time.deltaTime * playerSpeed)
+                    , transform.position.y, transform.position.z);
+
+            }
+        }
     }
 
     private void FormatStickMan()
     {
-        for (int i = 0; i < player.childCount; i++)
+        for (int i = 1; i < player.childCount; i++)
         {
             var x = DistanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i * Radius);
             var z = DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i * Radius);

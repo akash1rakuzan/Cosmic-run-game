@@ -1931,8 +1931,11 @@ MonoBehaviour:
   player: {fileID: 0}
   CounterTxt: {fileID: 201861490}
   stickMan: {fileID: 5595714545389061552, guid: 1a469e9429efa69449a8373ed4cf3472, type: 3}
-  DistanceFactor: 0.418
-  Radius: 0.937
+  DistanceFactor: 0.4
+  Radius: 1
+  moveByTouch: 0
+  gameState: 1
+  playerSpeed: 5
 --- !u!54 &1647264570
 Rigidbody:
   m_ObjectHideFlags: 0

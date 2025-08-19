@@ -1362,7 +1362,7 @@ Transform:
   m_GameObject: {fileID: 755967407}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23229113, y: 0, z: 0, w: 0.97264636}
-  m_LocalPosition: {x: 0, y: 1.84, z: 0.53}
+  m_LocalPosition: {x: 0.03, y: 0.6, z: -0.1}
   m_LocalScale: {x: 0.24741244, y: 0.24741244, z: 0.24741244}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1931,11 +1931,13 @@ MonoBehaviour:
   player: {fileID: 0}
   CounterTxt: {fileID: 201861490}
   stickMan: {fileID: 5595714545389061552, guid: 1a469e9429efa69449a8373ed4cf3472, type: 3}
-  DistanceFactor: 0.4
+  DistanceFactor: 0.54
   Radius: 1
   moveByTouch: 0
   gameState: 1
   playerSpeed: 5
+  roadSpeed: 4
+  road: {fileID: 4847600354085348891}
 --- !u!54 &1647264570
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2223,6 +2225,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a469e9429efa69449a8373ed4cf3472, type: 3}
+--- !u!4 &4847600354085348891 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1828181763489268232, guid: 58bc95f05099dd143afa32bd633bd040, type: 3}
+  m_PrefabInstance: {fileID: 8873304621608190784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8873304621608190784
 PrefabInstance:
   m_ObjectHideFlags: 0

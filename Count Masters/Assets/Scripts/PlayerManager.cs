@@ -14,8 +14,10 @@ public class PlayerManager : MonoBehaviour
     //----------move the player -------------------
     public bool moveByTouch, gameState;
     private Vector3 mouseStartPos, playerStartPos;
-    public float playerSpeed;
-    private Camera camera;
+    public float playerSpeed,roadSpeed;
+    private new Camera camera;
+
+    [SerializeField] private Transform road;
 
 
     void Start()
@@ -24,6 +26,7 @@ public class PlayerManager : MonoBehaviour
         numberOfStickmans = transform.childCount - 1;
         CounterTxt.text = numberOfStickmans.ToString();
         camera = Camera.main;
+        
     }
 
 
@@ -80,18 +83,25 @@ public class PlayerManager : MonoBehaviour
 
             }
         }
+
+        if (gameState) 
+        {
+
+            road.Translate(road.forward * Time.deltaTime * roadSpeed);
+        
+        }
     }
 
     private void FormatStickMan()
     {
-        for (int i = 1; i < player.childCount; i++)
+        for (int i = 2; i < player.childCount; i++)
         {
             var x = DistanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i * Radius);
             var z = DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i * Radius);
             var NewPos = new Vector3(x, 0f, z);
             player.transform.GetChild(i).DOLocalMove(NewPos, 1f).SetEase(Ease.OutBack);
         }
-        Debug.Log($"Format Stickmans called on {Time.fixedTime}");
+       
 
 
     }

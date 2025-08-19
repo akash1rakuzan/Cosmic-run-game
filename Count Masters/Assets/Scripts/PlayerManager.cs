@@ -88,7 +88,12 @@ public class PlayerManager : MonoBehaviour
         {
 
             road.Translate(road.forward * Time.deltaTime * roadSpeed);
-        
+            for (int i = 1; i < transform.childCount; i++)
+            {
+
+                transform.GetChild(i).GetComponent<Animator>().SetBool("run", true);
+            
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 public class PlayerManager : MonoBehaviour
 {
     public Transform player;
@@ -30,8 +31,9 @@ public class PlayerManager : MonoBehaviour
             var NewPos = new Vector3(x, 0f, z);
             player.transform.GetChild(i).DOLocalMove(NewPos, 1f).SetEase(Ease.OutBack);
         }
-    
-        
+        Debug.Log($"Format Stickmans called on {Time.fixedTime}");
+
+
     }
 
     private void MakeStickMan(int number) 
@@ -50,7 +52,6 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        
         if (other.CompareTag("gate"))
         {
             other.transform.parent.GetChild(0).GetComponent<BoxCollider>().enabled = false;

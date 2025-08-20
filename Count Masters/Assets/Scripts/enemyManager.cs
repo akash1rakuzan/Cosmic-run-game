@@ -6,9 +6,10 @@ public class enemyManager : MonoBehaviour
 {
     [SerializeField] private TextMeshPro CounterTxt;
     [SerializeField] private GameObject stickMan;
-    //******************************************
-
     [Range(0f, 1f)][SerializeField] private float DistanceFactor, Radius;
+
+    public Transform enemy;
+    public bool attack;
 
     void Start()
     {
@@ -39,6 +40,43 @@ public class enemyManager : MonoBehaviour
     }
     void Update()
     {
-        
+        if (attack && transform.childCount > 1)
+        {
+            var enemyPos = new Vector3(enemy.position.x, transform.position.y, enemy.position.z);
+            var enemyDirection = enemy.position - transform.position;
+
+            for (int i = 0; i < transform.childCount;i++) 
+            {
+                transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation,Quaternion.LookRotation(enemyDirection,Vector3.up),Time.deltaTime * 3f);
+
+                var distance = enemy.GetChild(1).position - transform.GetChild(i).position;
+
+                if (distance.magnitude < 7f)
+                {
+
+
+                    transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, enemy.GetChild(1).position, Time.deltaTime * 2f);
+
+                }
+            
+            }
+
+
+        }
     }
+
+    public void AttackThem(Transform enemyForce) 
+    {
+        enemy = enemyForce;
+        attack = true;
+
+        for (int i = 0;i < transform.childCount;i++) 
+        {
+            transform.GetChild(i).GetComponent<Animator>().SetBool("run", true);
+        
+        
+        }
+    
+    }
+
 }

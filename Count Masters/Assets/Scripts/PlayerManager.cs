@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
             var enemyDirection = new Vector3(enemy.position.x,transform.position.y,enemy.position.z) - transform.position;
             for (int i = 1; i < transform.childCount; i++)
             {
-                transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.LookRotation(enemyDirection, Vector3.up), Time.deltaTime * 3f);
+                transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.LookRotation(enemyDirection, Vector3.up), Time.deltaTime * 2f);
             }
 
             if (enemy.GetChild(1).childCount > 1)
@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
                     if (Distance.magnitude < 7f) 
                     {
 
-                        transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x, transform.GetChild(i).position.y, enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime * 3f);
+                        transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x, transform.GetChild(i).position.y, enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime * 1.5f);
                         
                     }
                 
@@ -191,6 +191,8 @@ public class PlayerManager : MonoBehaviour
             enemy = other.transform;
             attack = true;
             roadSpeed = 2.5f;
+
+            other.transform.GetChild(1).GetComponent<enemyManager>().AttackThem(transform);
         
         }
     

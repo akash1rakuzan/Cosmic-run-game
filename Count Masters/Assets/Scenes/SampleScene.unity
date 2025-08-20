@@ -2615,9 +2615,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CounterTxt: {fileID: 506762737}
-  stickMan: {fileID: 5595714545389061552, guid: 1a469e9429efa69449a8373ed4cf3472, type: 3}
+  stickMan: {fileID: 1781335142328836986, guid: dacb8b03a7a92984ea4b44f341728b62, type: 3}
   DistanceFactor: 0.48
   Radius: 0.65
+  enemy: {fileID: 0}
+  attack: 0
 --- !u!1 &1872097178 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3897929229655416569, guid: 58bc95f05099dd143afa32bd633bd040, type: 3}
@@ -2820,7 +2822,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5264354359968215421, guid: 1a469e9429efa69449a8373ed4cf3472, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04799986
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5264354359968215421, guid: 1a469e9429efa69449a8373ed4cf3472, type: 3}
       propertyPath: m_LocalPosition.y

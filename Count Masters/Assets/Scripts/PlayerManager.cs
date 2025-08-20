@@ -46,18 +46,32 @@ public class PlayerManager : MonoBehaviour
             if (enemy.GetChild(1).childCount > 1)
             {
                 for (int i = 0; i < transform.childCount; i++)
-                { 
+                {
                     var Distance = enemy.GetChild(1).GetChild(0).position - transform.GetChild(i).position;
-                    if (Distance.magnitude < 7f) 
+                    if (Distance.magnitude < 7f)
                     {
 
-                        transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x, transform.GetChild(i).position.y, enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime * 1.5f);
-                        
+                        transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x, transform.GetChild(i).position.y, enemy.GetChild(1).GetChild(0).position.z), Time.deltaTime * 1.5f);
+
                     }
+
+                }
+
+
+            }
+            else 
+            {
+
+                attack = false;
+                roadSpeed = 4f;
+
+                for (int i = 0; i < transform.childCount; i++) 
+                {
+                    transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.identity, Time.deltaTime * 2f);
                 
                 }
-            
-            
+                FormatStickMan();
+                enemy.gameObject.SetActive(false);
             }
             
 

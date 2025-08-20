@@ -8,6 +8,7 @@ TagManager:
   - gate
   - red
   - enemy
+  - jump
   layers:
   - Default
   - TransparentFX

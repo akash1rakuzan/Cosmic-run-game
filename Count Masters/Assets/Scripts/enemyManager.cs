@@ -49,15 +49,21 @@ public class enemyManager : MonoBehaviour
             {
                 transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation,Quaternion.LookRotation(enemyDirection,Vector3.up),Time.deltaTime * 3f);
 
-                var distance = enemy.GetChild(1).position - transform.GetChild(i).position;
-
-                if (distance.magnitude < 7f)
+                if (enemy.childCount > 1) 
                 {
+                    var distance = enemy.GetChild(1).position - transform.GetChild(i).position;
+
+                    if (distance.magnitude < 7f)
+                    {
 
 
-                    transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, enemy.GetChild(1).position, Time.deltaTime * 2f);
+                        transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, enemy.GetChild(1).position, Time.deltaTime * 2f);
+
+                    }
+
 
                 }
+                
             
             }
 

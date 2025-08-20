@@ -1,3 +1,5 @@
+using DG.Tweening;
+using UnityEditor;
 using UnityEngine;
 
 public class stickManManager : MonoBehaviour
@@ -12,8 +14,29 @@ public class stickManManager : MonoBehaviour
             Destroy(gameObject);
         
         }
-    
-    
+
+        switch (other.tag) 
+        {
+        
+            case "red":
+                if (other.transform.parent.childCount > 0) 
+                {
+                    Destroy(other.gameObject);
+                    Destroy(gameObject);
+
+                }
+
+                break;
+
+
+            case "jump":
+                transform.DOJump(transform.position,5f,1,2f).SetEase(Ease.Flash);
+                
+                break;
+
+        }
+
+
     }
    
     

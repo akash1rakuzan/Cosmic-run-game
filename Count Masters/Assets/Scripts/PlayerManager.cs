@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour
 
                 for (int i = 0; i < transform.childCount; i++) 
                 {
-                    transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.identity, Time.deltaTime * 2f);
+                    transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.identity, 10f);
                 
                 }
                 FormatStickMan();

@@ -18,6 +18,8 @@ public class PlayerManager : MonoBehaviour
     private new Camera camera;
 
     [SerializeField] private Transform road;
+    [SerializeField] private Transform enemy;
+    private bool attack;
 
 
     void Start()
@@ -32,7 +34,19 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        MoveThePlayer();
+        if (attack)
+        {
+
+
+
+
+        }
+        else 
+        {
+            MoveThePlayer();
+        }
+            
+       
     }
 
     void MoveThePlayer()
@@ -76,7 +90,7 @@ public class PlayerManager : MonoBehaviour
                 if (numberOfStickmans > 50)
                     control.x = Mathf.Clamp(control.x, 3f, 10f);
                 else
-                    control.x = Mathf.Clamp(control.x, 0f, 13f);
+                    control.x = Mathf.Clamp(control.x, 0.65f, 12.65f);
 
                 transform.position = new Vector3(Mathf.Lerp(transform.position.x, control.x, Time.deltaTime * playerSpeed)
                     , transform.position.y, transform.position.z);
@@ -92,7 +106,7 @@ public class PlayerManager : MonoBehaviour
             {
 
                 transform.GetChild(i).GetComponent<Animator>().SetBool("run", true);
-            
+
             }
         }
     }
@@ -147,6 +161,14 @@ public class PlayerManager : MonoBehaviour
             }
             
 
+        }
+
+        if (other.CompareTag("enemy")) 
+        {
+            enemy = other.transform;
+            attack = true;
+        
+        
         }
     
     }

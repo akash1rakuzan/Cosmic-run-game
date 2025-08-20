@@ -6,6 +6,8 @@ TagManager:
   tags:
   - blue
   - gate
+  - red
+  - enemy
   layers:
   - Default
   - TransparentFX

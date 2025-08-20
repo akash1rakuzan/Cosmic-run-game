@@ -42,6 +42,23 @@ public class PlayerManager : MonoBehaviour
             {
                 transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.LookRotation(enemyDirection, Vector3.up), Time.deltaTime * 3f);
             }
+
+            if (enemy.GetChild(1).childCount > 1)
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                { 
+                    var Distance = enemy.GetChild(1).GetChild(0).position - transform.GetChild(i).position;
+                    if (Distance.magnitude < 7f) 
+                    {
+
+                        transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x, transform.GetChild(i).position.y, enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime * 3f);
+                        
+                    }
+                
+                }
+            
+            
+            }
             
 
         }
@@ -49,8 +66,20 @@ public class PlayerManager : MonoBehaviour
         {
             MoveThePlayer();
         }
-            
-       
+
+        if (gameState)
+        {
+
+            road.Translate(road.forward * Time.deltaTime * roadSpeed);
+            for (int i = 1; i < transform.childCount; i++)
+            {
+
+                transform.GetChild(i).GetComponent<Animator>().SetBool("run", true);
+
+            }
+        }
+
+
     }
 
     void MoveThePlayer()
@@ -102,17 +131,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        if (gameState) 
-        {
-
-            road.Translate(road.forward * Time.deltaTime * roadSpeed);
-            for (int i = 1; i < transform.childCount; i++)
-            {
-
-                transform.GetChild(i).GetComponent<Animator>().SetBool("run", true);
-
-            }
-        }
+        
     }
 
     private void FormatStickMan()
@@ -171,7 +190,7 @@ public class PlayerManager : MonoBehaviour
         {
             enemy = other.transform;
             attack = true;
-        
+            roadSpeed = 2.5f;
         
         }
     

@@ -1571,7 +1571,7 @@ Transform:
   m_GameObject: {fileID: 755967407}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23229113, y: 0, z: 0, w: 0.97264636}
-  m_LocalPosition: {x: 0.03, y: 0.6, z: -0.1}
+  m_LocalPosition: {x: 0.03, y: 2.13, z: 0.68}
   m_LocalScale: {x: 0.24741244, y: 0.24741244, z: 0.24741244}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1837,14 +1837,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868502097}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.89, y: 0.2, z: 43.7}
-  m_LocalScale: {x: 1.5374222, y: 1.5374222, z: 1.5374222}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 13.473719, y: 0.2, z: -5.1366043}
+  m_LocalScale: {x: 1.537422, y: 1.5374223, z: 1.5374224}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1229356482}
   - {fileID: 1710671499}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4847600354085348891}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!65 &868502100
 BoxCollider:
@@ -1865,7 +1865,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 7, z: 0.20000005}
+  m_Size: {x: 9, y: 7, z: 0.20000005}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1013407626
 PrefabInstance:
@@ -2476,6 +2476,7 @@ MonoBehaviour:
   playerSpeed: 5
   roadSpeed: 4
   road: {fileID: 4847600354085348891}
+  enemy: {fileID: 0}
 --- !u!54 &1647264570
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2939,7 +2940,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3477128813627076775, guid: 58bc95f05099dd143afa32bd633bd040, type: 3}
     - {fileID: 2800748742311828921, guid: 58bc95f05099dd143afa32bd633bd040, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1828181763489268232, guid: 58bc95f05099dd143afa32bd633bd040, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 868502099}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 656310038052421417, guid: 58bc95f05099dd143afa32bd633bd040, type: 3}
       insertIndex: -1
@@ -2966,4 +2970,3 @@ SceneRoots:
   - {fileID: 8873304621608190784}
   - {fileID: 1647264568}
   - {fileID: 1326647059}
-  - {fileID: 868502099}

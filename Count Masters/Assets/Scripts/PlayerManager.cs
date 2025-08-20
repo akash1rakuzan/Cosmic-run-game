@@ -37,8 +37,12 @@ public class PlayerManager : MonoBehaviour
         if (attack)
         {
 
-
-
+            var enemyDirection = new Vector3(enemy.position.x,transform.position.y,enemy.position.z) - transform.position;
+            for (int i = 1; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.LookRotation(enemyDirection, Vector3.up), Time.deltaTime * 3f);
+            }
+            
 
         }
         else 

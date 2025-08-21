@@ -1,10 +1,11 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using System.Collections;
 public class PlayerManager : MonoBehaviour
 {
     public Transform player;
-    private int numberOfStickmans;
+    private int numberOfStickmans,numberOfEnemyStickMans;
     [SerializeField] private TextMeshPro CounterTxt;
     [SerializeField] private GameObject stickMan;
     //******************************************
@@ -75,8 +76,8 @@ public class PlayerManager : MonoBehaviour
                     transform.GetChild(i).rotation = Quaternion.identity;
 
                 }
-                
-                enemy.gameObject.SetActive(false);
+
+                    enemy.gameObject.SetActive(false);
             }
             if (transform.childCount == 1)
             {
@@ -177,7 +178,7 @@ public class PlayerManager : MonoBehaviour
     private void MakeStickMan(int number) 
     {
     
-        for (int i = 0; i < number; i++)
+        for (int i = numberOfStickmans; i < number; i++)
         {
 
             Instantiate(stickMan, transform.position, Quaternion.identity, transform);
@@ -219,8 +220,38 @@ public class PlayerManager : MonoBehaviour
             roadSpeed = 2.5f;
 
             other.transform.GetChild(1).GetComponent<enemyManager>().AttackThem(transform);
-        
+
+            StartCoroutine(UpdateTheEnemyAndPlayerStickMansNumbers());
         }
     
+    }
+    IEnumerator UpdateTheEnemyAndPlayerStickMansNumbers() 
+    {
+        numberOfEnemyStickMans = enemy.transform.GetChild(1).childCount-1;
+        numberOfStickmans = transform.childCount - 1;
+
+        while (numberOfEnemyStickMans > 0 && numberOfStickmans > 0) 
+        {
+            numberOfEnemyStickMans--;
+            numberOfStickmans--;
+
+            enemy.transform.GetChild(1).GetComponent<enemyManager>().CounterTxt.text = numberOfEnemyStickMans.ToString();
+            CounterTxt.text = numberOfStickmans.ToString();
+            yield return null;
+        }
+
+        if (numberOfEnemyStickMans == 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            { 
+                transform.GetChild(i).rotation= Quaternion.identity;
+                
+            }
+
+            
+            
+            
+        }
+
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class enemyManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro CounterTxt;
+    [SerializeField] public TextMeshPro CounterTxt;
     [SerializeField] private GameObject stickMan;
     [Range(0f, 1f)][SerializeField] private float DistanceFactor, Radius;
 

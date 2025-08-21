@@ -9,7 +9,7 @@ public class GateManager : MonoBehaviour
     {
         if (multiply)
         {
-            randomNumber = Random.Range(1, 3);
+            randomNumber = Random.Range(3, 10);
             GateNo.text = "X" + randomNumber;
         }
         else

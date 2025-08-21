@@ -1,7 +1,9 @@
-using UnityEngine;
-using TMPro;
 using DG.Tweening;
 using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     public Transform player;
@@ -31,12 +33,18 @@ public class PlayerManager : MonoBehaviour
         camera = Camera.main;
         PlayerManagerInstance = this;
 
-
+        
     }
 
 
     void Update()
     {
+        if (transform.childCount == 1)
+        {
+            SceneManager.LoadScene(0);
+        }
+
+
         if (attack)
         {
 
@@ -148,7 +156,7 @@ public class PlayerManager : MonoBehaviour
 
 
                 if (numberOfStickmans > 50)
-                    control.x = Mathf.Clamp(control.x, 3f, 10f);
+                    control.x = Mathf.Clamp(control.x, 4.15f, 9.15f);
                 else
                     control.x = Mathf.Clamp(control.x, 0.65f, 12.65f);
 

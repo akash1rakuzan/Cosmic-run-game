@@ -85,4 +85,17 @@ public class enemyManager : MonoBehaviour
     
     }
 
+    public void StopAttacking() 
+    {
+
+        PlayerManager.PlayerManagerInstance.gameState =  attack = false;
+        for (int i = 0; i < transform.childCount;i++) 
+        {
+
+            transform.GetChild(i).GetComponent<Animator>().SetBool("run", false);
+        
+        }
+    
+    }
+
 }

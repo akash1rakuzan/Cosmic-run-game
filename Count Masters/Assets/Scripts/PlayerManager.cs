@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform road;
     [SerializeField] private Transform enemy;
     private bool attack;
-
+    public static PlayerManager PlayerManagerInstance;
 
     void Start()
     {
@@ -28,7 +28,9 @@ public class PlayerManager : MonoBehaviour
         numberOfStickmans = transform.childCount - 1;
         CounterTxt.text = numberOfStickmans.ToString();
         camera = Camera.main;
-        
+        PlayerManagerInstance = this;
+
+
     }
 
 
@@ -65,19 +67,29 @@ public class PlayerManager : MonoBehaviour
                 attack = false;
                 roadSpeed = 4f;
 
-                for (int i = 0; i < transform.childCount; i++) 
-                {
-                    transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.identity, 10f);
                 
-                }
                 FormatStickMan();
+               
+                for (int i = 1; i < transform.childCount; i++)
+                {
+                    transform.GetChild(i).rotation = Quaternion.identity;
+
+                }
+                
                 enemy.gameObject.SetActive(false);
+            }
+            if (transform.childCount == 1)
+            {
+                enemy.transform.GetChild(1).GetComponent<enemyManager>().StopAttacking();
+                gameObject.SetActive(false);
+            
             }
             
 
         }
         else 
         {
+            
             MoveThePlayer();
         }
 
@@ -148,7 +160,7 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    private void FormatStickMan()
+    public void FormatStickMan()
     {
         for (int i = 2; i < player.childCount; i++)
         {

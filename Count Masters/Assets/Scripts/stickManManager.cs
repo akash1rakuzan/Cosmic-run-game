@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class stickManManager : MonoBehaviour
 {
-
+    [SerializeField] ParticleSystem blood;
     private void OnTriggerEnter(Collider other ) 
     {
         if (other.CompareTag("red") && other.transform.parent.childCount > 0) 
@@ -12,6 +12,8 @@ public class stickManManager : MonoBehaviour
 
             Destroy(other.gameObject);
             Destroy(gameObject);
+
+            Instantiate(blood,new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z),Quaternion.identity);
         
         }
 

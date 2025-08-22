@@ -53,7 +53,7 @@ public class enemyManager : MonoBehaviour
                 {
                     var distance = enemy.GetChild(1).position - transform.GetChild(i).position;
 
-                    if (distance.magnitude < 7f)
+                    if (distance.magnitude < 8f)
                     {
 
 

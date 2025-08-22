@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -59,7 +60,7 @@ public class PlayerManager : MonoBehaviour
                 for (int i = 0; i < transform.childCount; i++)
                 {
                     var Distance = enemy.GetChild(1).GetChild(0).position - transform.GetChild(i).position;
-                    if (Distance.magnitude < 7f)
+                    if (Distance.magnitude < 8f)
                     {
 
                         transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x, transform.GetChild(i).position.y, enemy.GetChild(1).GetChild(0).position.z), Time.deltaTime * 1.5f);
@@ -156,9 +157,15 @@ public class PlayerManager : MonoBehaviour
 
 
                 if (numberOfStickmans > 50)
-                    control.x = Mathf.Clamp(control.x, 4.15f, 9.15f);
+                    control.x = Mathf.Clamp(control.x, 4.15f, 9.5f);
+                else if (numberOfStickmans > 30)
+                    control.x = Mathf.Clamp(control.x, 3.15f, 10.5f);
+                else if (numberOfStickmans > 20)
+                    control.x = Mathf.Clamp(control.x, 2f, 11.65f);
+                else if (numberOfStickmans > 10)
+                    control.x = Mathf.Clamp(control.x, 1.3f, 12.35f);
                 else
-                    control.x = Mathf.Clamp(control.x, 0.65f, 12.65f);
+                    control.x = Mathf.Clamp(control.x, 0.65f, 13f);
 
                 transform.position = new Vector3(Mathf.Lerp(transform.position.x, control.x, Time.deltaTime * playerSpeed)
                     , transform.position.y, transform.position.z);

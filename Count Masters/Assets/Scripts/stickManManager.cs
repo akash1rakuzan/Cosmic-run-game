@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
-
+using System.Collections;
 public class stickManManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem blood;
@@ -32,15 +32,57 @@ public class stickManManager : MonoBehaviour
 
 
             case "jump":
-                transform.DOJump(transform.position,5f,1,1.5f).SetEase(Ease.Flash).OnComplete(PlayerManager.PlayerManagerInstance.FormatStickMan);
-                
+                PlayerManager.JumpCounter++;
+
+                Vector3 startPos = transform.position;
+                float jumpDuration = 1.5f;
+                float jumpHeight = 5f;
+
+                // Store offset relative to player
+                float xOffset = transform.position.x - PlayerManager.PlayerManagerInstance.transform.position.x;
+
+                // Animate Y only (jump arc)
+                transform.DOMoveY(startPos.y + jumpHeight, jumpDuration / 2f)
+                    .SetEase(Ease.OutQuad)
+                    .OnComplete(() =>
+                    {
+                        transform.DOMoveY(startPos.y, jumpDuration / 2f)
+                            .SetEase(Ease.InQuad);
+                    });
+
+                // Follow player but keep original offset
+                StartCoroutine(FollowPlayerDuringJump(jumpDuration, xOffset));
+
                 break;
+
 
         }
 
 
     }
-   
-    
+
+    private IEnumerator FollowPlayerDuringJump(float duration, float xOffset)
+    {
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            Vector3 pos = transform.position;
+            pos.x = PlayerManager.PlayerManagerInstance.transform.position.x + xOffset; // keep offset
+            transform.position = pos;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        // Jump finished
+        PlayerManager.JumpCounter--;
+
+        if (PlayerManager.JumpCounter == 0)
+        {
+            PlayerManager.PlayerManagerInstance.FormatStickMan();
+        }
+    }
+
 }
 

@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     private bool attack;
     public static PlayerManager PlayerManagerInstance;
 
+    public static int JumpCounter = 0;
     void Start()
     {
         player = transform;
@@ -249,7 +250,7 @@ public class PlayerManager : MonoBehaviour
         {
             numberOfEnemyStickMans--;
             numberOfStickmans--;
-
+           
             enemy.transform.GetChild(1).GetComponent<enemyManager>().CounterTxt.text = numberOfEnemyStickMans.ToString();
             CounterTxt.text = numberOfStickmans.ToString();
             yield return null;
@@ -258,14 +259,19 @@ public class PlayerManager : MonoBehaviour
         if (numberOfEnemyStickMans == 0)
         {
             for (int i = 0; i < transform.childCount; i++)
-            { 
-                transform.GetChild(i).rotation= Quaternion.identity;
-                
+            {
+                transform.GetChild(i).rotation = Quaternion.identity;
+                enemy.transform.GetChild(1).GetComponent<enemyManager>().CounterTxt.text = "win";
+
+
             }
 
-            
-            
-            
+        }
+        else 
+        {
+
+            CounterTxt.text = "lost";
+
         }
 
     }

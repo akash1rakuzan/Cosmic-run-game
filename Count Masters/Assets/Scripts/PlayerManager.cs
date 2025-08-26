@@ -179,12 +179,17 @@ public class PlayerManager : MonoBehaviour
 
     public void FormatStickMan()
     {
-        for (int i = 2; i < player.childCount; i++)
+        for (int i = 1; i < player.childCount; i++)
         {
             var x = DistanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i * Radius);
             var z = DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i * Radius);
             var NewPos = new Vector3(x, 0f, z);
             player.transform.GetChild(i).DOLocalMove(NewPos, 1f).SetEase(Ease.OutBack);
+            if (i == 1)
+            {
+                var NewPosForLabel = new Vector3(x,2.13f, z);
+                player.transform.GetChild(0).DOLocalMove(NewPosForLabel, 1f).SetEase(Ease.OutBack);
+            }
         }
        
 
@@ -203,6 +208,7 @@ public class PlayerManager : MonoBehaviour
         numberOfStickmans = transform.childCount - 1;
         CounterTxt.text = numberOfStickmans.ToString();
         FormatStickMan();
+
     }
 
     private void OnTriggerEnter(Collider other) 

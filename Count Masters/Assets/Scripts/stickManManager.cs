@@ -1,7 +1,8 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 public class stickManManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem blood;
@@ -81,6 +82,7 @@ public class stickManManager : MonoBehaviour
         if (PlayerManager.JumpCounter == 0)
         {
             PlayerManager.PlayerManagerInstance.FormatStickMan();
+            
         }
     }
 

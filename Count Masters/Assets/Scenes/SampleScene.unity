@@ -1976,11 +1976,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 90512ffd6f55e2c4691d3808bc3f81f8, type: 3}
---- !u!4 &7096351583761973576 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5879417048802757987, guid: 90512ffd6f55e2c4691d3808bc3f81f8, type: 3}
-  m_PrefabInstance: {fileID: 4542656468264929358}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7807196818635121252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2000,7 +1995,7 @@ PrefabInstance:
     - target: {fileID: 3755649842600835058, guid: dddc4a285f769db4ea9b548083c98925, type: 3}
       propertyPath: road
       value: 
-      objectReference: {fileID: 7096351583761973576}
+      objectReference: {fileID: 1647264568}
     - target: {fileID: 5173584490278700145, guid: dddc4a285f769db4ea9b548083c98925, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.032

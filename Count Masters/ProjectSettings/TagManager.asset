@@ -9,6 +9,7 @@ TagManager:
   - red
   - enemy
   - jump
+  - obstacle
   layers:
   - Default
   - TransparentFX

@@ -140,7 +140,19 @@ PrefabInstance:
       propertyPath: m_TagString
       value: obstacle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1578324482915634007, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 331690439112284285, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 537458601638681748, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 820608241251225707, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 3882627663851377275, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 3260243166435119479, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 5064468618128963383, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 8904789807889983066, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 9159350785611753394, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 7295720367780359525, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 7607992418369293294, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
+    - {fileID: 7570823710385327436, guid: 761d5e49fa60c484cb8a523b7f171802, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

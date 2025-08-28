@@ -158,15 +158,15 @@ public class PlayerManager : MonoBehaviour
 
 
                 if (numberOfStickmans > 50)
-                    control.x = Mathf.Clamp(control.x, 4.15f, 9.5f);
+                    control.x = Mathf.Clamp(control.x, -3.5f, 3.5f);
                 else if (numberOfStickmans > 30)
-                    control.x = Mathf.Clamp(control.x, 3.15f, 10.5f);
+                    control.x = Mathf.Clamp(control.x, -3.75f, 3.75f);
                 else if (numberOfStickmans > 20)
-                    control.x = Mathf.Clamp(control.x, 2f, 11.65f);
+                    control.x = Mathf.Clamp(control.x, -4f, 4f);
                 else if (numberOfStickmans > 10)
-                    control.x = Mathf.Clamp(control.x, 1.3f, 12.35f);
+                    control.x = Mathf.Clamp(control.x, -4.5f, 4.5f);
                 else
-                    control.x = Mathf.Clamp(control.x, 0.65f, 13f);
+                    control.x = Mathf.Clamp(control.x, -6f, 6f);
 
                 transform.position = new Vector3(Mathf.Lerp(transform.position.x, control.x, Time.deltaTime * playerSpeed)
                     , transform.position.y, transform.position.z);

@@ -986,6 +986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: {fileID: 8609446460969082863, guid: c9aae9493acb3cf4484fd60462e85a64, type: 3}
+  obstacleResetTime: 1
 --- !u!1 &5677732280920237971
 GameObject:
   m_ObjectHideFlags: 0

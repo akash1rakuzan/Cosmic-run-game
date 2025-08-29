@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+        CounterTxt.text = $"{transform.childCount - 1}";
         // Update obstacle timer once per frame, no matter how many stickmen
         if (obstacleTimer > 0f)
         {
@@ -210,7 +211,7 @@ public class PlayerManager : MonoBehaviour
     private void MakeStickMan(int number) 
     {
     
-        for (int i = numberOfStickmans; i < number; i++)
+        for (int i = transform.childCount-1; i < number; i++)
         {
 
             Instantiate(stickMan, transform.position, Quaternion.identity, transform);
@@ -233,13 +234,13 @@ public class PlayerManager : MonoBehaviour
 
             if (gateManager.multiply)
             {
-                MakeStickMan(numberOfStickmans * gateManager.randomNumber);
+                MakeStickMan((transform.childCount-1) * gateManager.randomNumber);
 
 
             }
             else 
             {
-                MakeStickMan(numberOfStickmans + gateManager.randomNumber);
+                MakeStickMan((transform.childCount - 1) + gateManager.randomNumber);
 
             }
             
@@ -254,44 +255,11 @@ public class PlayerManager : MonoBehaviour
 
             other.transform.GetChild(1).GetComponent<enemyManager>().AttackThem(transform);
 
-            //StartCoroutine(UpdateTheEnemyAndPlayerStickMansNumbers());
+            
         }
     
     }
-    IEnumerator UpdateTheEnemyAndPlayerStickMansNumbers() 
-    {
-        numberOfEnemyStickMans = enemy.transform.GetChild(1).childCount-1;
-        numberOfStickmans = transform.childCount - 1;
-
-        while (numberOfEnemyStickMans > 0 && numberOfStickmans > 0) 
-        {
-            numberOfEnemyStickMans--;
-            numberOfStickmans--;
-           
-            enemy.transform.GetChild(1).GetComponent<enemyManager>().CounterTxt.text = numberOfEnemyStickMans.ToString();
-            CounterTxt.text = numberOfStickmans.ToString();
-            yield return null;
-        }
-
-        if (numberOfEnemyStickMans == 0)
-        {
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                transform.GetChild(i).rotation = Quaternion.identity;
-                enemy.transform.GetChild(1).GetComponent<enemyManager>().CounterTxt.text = "win";
-
-
-            }
-
-        }
-        else 
-        {
-
-            CounterTxt.text = "lost";
-
-        }
-
-    }
+    
     public static void ResetObstacleTimer()
     {
         obstacleTimer = 1f; // or whatever value you want

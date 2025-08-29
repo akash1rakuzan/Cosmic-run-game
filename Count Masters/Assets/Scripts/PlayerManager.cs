@@ -30,6 +30,7 @@ public class PlayerManager : MonoBehaviour
     public static float obstacleTimer = -1f; // -1 means timer not running
     void Start()
     {
+        Application.targetFrameRate = 60;
         player = transform;
         numberOfStickmans = transform.childCount - 1;
         CounterTxt.text = numberOfStickmans.ToString();

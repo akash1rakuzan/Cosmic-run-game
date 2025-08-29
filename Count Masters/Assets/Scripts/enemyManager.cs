@@ -40,6 +40,7 @@ public class enemyManager : MonoBehaviour
     }
     void Update()
     {
+        CounterTxt.text = $"{transform.childCount}";
         if (attack && transform.childCount > 1)
         {
             var enemyPos = new Vector3(enemy.position.x, transform.position.y, enemy.position.z);

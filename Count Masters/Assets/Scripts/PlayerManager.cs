@@ -157,13 +157,13 @@ public class PlayerManager : MonoBehaviour
                 var control = playerStartPos + move;
 
 
-                if (transform.childCount > 50)
+                if (transform.childCount - 1 > 50)
                     control.x = Mathf.Clamp(control.x, -3.5f, 3.5f);
-                else if (transform.childCount > 30)
+                else if (transform.childCount - 1 > 30)
                     control.x = Mathf.Clamp(control.x, -3.75f, 3.75f);
-                else if (transform.childCount > 20)
+                else if (transform.childCount - 1  > 20)
                     control.x = Mathf.Clamp(control.x, -4f, 4f);
-                else if (transform.childCount > 10)
+                else if (transform.childCount - 1 > 10)
                     control.x = Mathf.Clamp(control.x, -4.5f, 4.5f);
                 else
                     control.x = Mathf.Clamp(control.x, -6f, 6f);

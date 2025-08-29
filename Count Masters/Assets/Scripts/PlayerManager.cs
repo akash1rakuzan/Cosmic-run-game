@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
 {
     public Transform player;
     private int numberOfStickmans,numberOfEnemyStickMans;
-    [SerializeField] private TextMeshPro CounterTxt;
+    public TextMeshPro CounterTxt;
     [SerializeField] private GameObject stickMan;
     //******************************************
 
@@ -27,6 +27,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager PlayerManagerInstance;
 
     public static int JumpCounter = 0;
+    public static float obstacleTimer = -1f; // -1 means timer not running
     void Start()
     {
         player = transform;
@@ -41,6 +42,18 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+        // Update obstacle timer once per frame, no matter how many stickmen
+        if (obstacleTimer > 0f)
+        {
+            obstacleTimer -= Time.deltaTime;
+
+            if (obstacleTimer <= 0f)
+            {
+                FormatStickMan();
+                obstacleTimer = -1f; // stop timer
+            }
+        }
+
         if (transform.childCount == 1)
         {
             SceneManager.LoadScene(0);
@@ -115,8 +128,6 @@ public class PlayerManager : MonoBehaviour
 
             }
         }
-
-
     }
 
     void MoveThePlayer()
@@ -243,7 +254,7 @@ public class PlayerManager : MonoBehaviour
 
             other.transform.GetChild(1).GetComponent<enemyManager>().AttackThem(transform);
 
-            StartCoroutine(UpdateTheEnemyAndPlayerStickMansNumbers());
+            //StartCoroutine(UpdateTheEnemyAndPlayerStickMansNumbers());
         }
     
     }
@@ -281,4 +292,9 @@ public class PlayerManager : MonoBehaviour
         }
 
     }
+    public static void ResetObstacleTimer()
+    {
+        obstacleTimer = 1f; // or whatever value you want
+    }
+
 }

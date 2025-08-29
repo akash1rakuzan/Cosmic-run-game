@@ -6,6 +6,29 @@ using UnityEngine.SceneManagement;
 public class stickManManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem blood;
+
+   
+    
+
+    //private void Update()
+    //{
+    //    // Countdown the obstacle timer
+    //    Debug.Log(PlayerManager.obstacleTimer);
+
+    //    if (PlayerManager.obstacleTimer > 0f)
+    //    {
+    //        PlayerManager.obstacleTimer -= Time.deltaTime;
+            
+    //        if (PlayerManager.obstacleTimer <= 0f)
+    //        {
+    //            // Timer ran out - >  reset stickmen
+                
+    //            PlayerManager.PlayerManagerInstance.FormatStickMan();
+    //            PlayerManager.obstacleTimer = -1f; // stop timer
+    //        }
+    //    }
+    //}
+
     private void OnTriggerEnter(Collider other ) 
     {
         //if (other.CompareTag("red") && other.transform.parent.childCount > 0) 
@@ -15,7 +38,7 @@ public class stickManManager : MonoBehaviour
         //    Destroy(gameObject);
 
         //    Instantiate(blood,new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z),Quaternion.identity);
-        
+
         //}
 
         switch (other.tag) 
@@ -32,6 +55,12 @@ public class stickManManager : MonoBehaviour
                 break;
 
             case "obstacle":
+
+                // Reset stickman timer
+
+                // Only reset timer here, don't update it in Update()
+                PlayerManager.ResetObstacleTimer();
+
                 // Kill stickman and spawn blood
                 Destroy(gameObject);
                 Instantiate(blood, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);

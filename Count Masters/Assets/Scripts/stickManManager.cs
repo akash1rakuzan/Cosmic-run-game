@@ -31,6 +31,16 @@ public class stickManManager : MonoBehaviour
 
                 break;
 
+            case "obstacle":
+                // Kill stickman and spawn blood
+                Destroy(gameObject);
+                Instantiate(blood, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
+                break;
+
+            case "finish":
+                // Load Scene 0 (usually main menu)
+                SceneManager.LoadScene(0);
+                break;
 
             case "jump":
                 PlayerManager.JumpCounter++;

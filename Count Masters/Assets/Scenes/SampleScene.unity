@@ -1505,6 +1505,7 @@ MonoBehaviour:
   - {fileID: 3337253640098259588, guid: 0b23c784e620cf549b33ea3f82b693d0, type: 3}
   - {fileID: 3396311143421369322, guid: 46b1bab36c1c5bf4b9651d9ce848f438, type: 3}
   - {fileID: 8984383708533133397, guid: 7ac98969e495c5e4285f3f6977ebb8df, type: 3}
+  - {fileID: 3083032346273712028, guid: aeba0be9a7264a845b05d0e5d9ad352c, type: 3}
   initialBlocks: 5
   blockLength: 30
   player: {fileID: 3140415811387532821}
@@ -2085,10 +2086,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8989592790763370827, guid: aeba0be9a7264a845b05d0e5d9ad352c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeba0be9a7264a845b05d0e5d9ad352c, type: 3}
 --- !u!1001 &1293821452415571296
 PrefabInstance:
@@ -2783,16 +2781,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7735182711800810187, guid: 0aa42ece651d6e94fa7389a885860c76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 8903659270098856991, guid: 0aa42ece651d6e94fa7389a885860c76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6891965883743689893, guid: 0aa42ece651d6e94fa7389a885860c76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa42ece651d6e94fa7389a885860c76, type: 3}
 --- !u!1001 &8315294639066323379
 PrefabInstance:
